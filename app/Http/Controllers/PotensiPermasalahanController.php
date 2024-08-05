@@ -11,13 +11,50 @@ class PotensiPermasalahanController extends Controller
 {
     public function getAllData()
     {
-        $permasalahans = PotensiPermasalahan::with('desa')->orderBy('created_at','desc')->get();
+        $permasalahans = PotensiPermasalahan::with('desa')->where('status','belum dibantu')->orderBy('created_at','desc')->get();
 
         if (!$permasalahans) {
-            return response()->json(['error' => 'User not found'], 404);
+            return response()->json(['error' => 'Permasalahan not found'], 404);
         }
 
         return response()->json($permasalahans);
+    }
+
+    public function getData($id)
+    {
+        $permasalahan = PotensiPermasalahan::with('desa')->where('id',$id)->first();
+
+        if (!$permasalahan) {
+            return response()->json(['error' => 'Permasalahan not found'], 404);
+        }
+
+        return response()->json($permasalahan);
+    }
+
+    public function editStatusSudah($id)
+    {
+        $permasalahan = PotensiPermasalahan::find($id);
+
+        if (!$permasalahan) {
+            return response()->json(['error' => 'Permasalahan not found'], 404);
+        }
+        
+        $permasalahan->update(['status' => 'sudah dibantu']);
+
+        return response()->json(['message' => 'Permasalahan status updated successfully'], 200);
+    }
+
+    public function editStatusBelum($id)
+    {
+        $permasalahan = PotensiPermasalahan::find($id);
+
+        if (!$permasalahan) {
+            return response()->json(['error' => 'Permasalahan not found'], 404);
+        }
+        
+        $permasalahan->update(['status' => 'belum dibantu']);
+
+        return response()->json(['message' => 'Permasalahan status updated successfully'], 200);
     }
 
     public function index(Request $request)

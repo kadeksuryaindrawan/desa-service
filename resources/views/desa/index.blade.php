@@ -46,7 +46,7 @@
                                                 </div>
                                                 <div class="mb-3 col-md-12">
                                                     <label class="form-label">Alamat</label>
-                                                    <textarea name="alamat" class="form-control" name="alamat" id="" cols="30" rows="10" required></textarea>
+                                                    <textarea class="form-control" name="alamat" id="" cols="30" rows="10" required></textarea>
                                                     @error('alamat')
                                                         <p class="text-danger text-sm">{{ $message }}</p>
                                                     @enderror
@@ -68,7 +68,7 @@
                                                 </div>
                                                 <div class="mb-3 col-md-12">
                                                     <label class="form-label">Alamat</label>
-                                                    <textarea name="alamat" class="form-control" name="alamat" id="" cols="30" rows="10" required>{{ $desa->alamat }}</textarea>
+                                                    <textarea class="form-control" name="alamat" id="" cols="30" rows="10" required>{{ $desa->alamat }}</textarea>
                                                     @error('alamat')
                                                         <p class="text-danger text-sm">{{ $message }}</p>
                                                     @enderror

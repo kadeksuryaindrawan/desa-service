@@ -20,3 +20,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/getAllDataPotensiPermasalahanDesa', [PotensiPermasalahanController::class, 'getAllData']);
+
+Route::get('/getDataPotensiPermasalahanDesa/{id}', [PotensiPermasalahanController::class, 'getData']);
+
+Route::post('/editStatusPermasalahanSudah/{id}', [PotensiPermasalahanController::class, 'editStatusSudah']);
+
+Route::post('/editStatusPermasalahanBelum/{id}', [PotensiPermasalahanController::class, 'editStatusBelum']);

@@ -21,7 +21,7 @@ class VerifyToken
         $userId = $request->id;
 
         if (!$userId) {
-            return redirect()->back();
+            return redirect('http://127.0.0.1:8000/login');
         }
 
         // Panggil API Auth Service untuk mendapatkan data pengguna tanpa header

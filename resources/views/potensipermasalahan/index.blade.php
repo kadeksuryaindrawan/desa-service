@@ -59,20 +59,24 @@
                                                                 @endif
                                                             </td>
                                                         <td>
-                                                            <div class="dropdown">
-                                                                <button id="toa" class="btn btn-sm btn-primary" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                                                    <i class="flaticon-043-menu"></i>
-                                                                </button>
-                                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                                    <a href="{{ url('/potensipermasalahan/edit?id=' . $userId . '&permasalahan_id=' . $permasalahan->id) }}" class="dropdown-item">Edit</a>
-                                                                    <form action="{{ route('delete-process',$userId) }}" method="post" onsubmit="return confirm('Yakin hapus data?')">
-                                                                        @csrf
-                                                                        <input type="hidden" name="permasalahan_id" value="{{ $permasalahan->id }}" id="">
-                                                                        @method('delete')
-                                                                        <button class="dropdown-item">Hapus</button>
-                                                                    </form>
+                                                            @if ($permasalahan->status == 'belum dibantu')
+                                                                <div class="dropdown">
+                                                                    <button id="toa" class="btn btn-sm btn-primary" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                                                        <i class="flaticon-043-menu"></i>
+                                                                    </button>
+                                                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                                                        <a href="{{ url('/potensipermasalahan/edit?id=' . $userId . '&permasalahan_id=' . $permasalahan->id) }}" class="dropdown-item">Edit</a>
+                                                                        <form action="{{ route('delete-process',$userId) }}" method="post" onsubmit="return confirm('Yakin hapus data?')">
+                                                                            @csrf
+                                                                            <input type="hidden" name="permasalahan_id" value="{{ $permasalahan->id }}" id="">
+                                                                            @method('delete')
+                                                                            <button class="dropdown-item">Hapus</button>
+                                                                        </form>
+                                                                    </div>
                                                                 </div>
-                                                            </div>
+                                                            @else
+                                                                -
+                                                            @endif
                                                         </td>
                                                     </tr>
                                                 @endforeach

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DesaController;
+use App\Http\Controllers\HistoryBantuanController;
 use App\Http\Controllers\PotensiPermasalahanController;
 use Illuminate\Support\Facades\Route;
 
@@ -30,7 +31,6 @@ Route::middleware(['web', 'auth.token'])->group(function () {
     Route::put('/potensipermasalahan/edit/{id}', [PotensiPermasalahanController::class, 'edit_process'])->name('edit-permasalahan-process');
     Route::delete('/potensipermasalahan/delete/{id}', [PotensiPermasalahanController::class, 'delete_process'])->name('delete-process');
 
-    // Route::get('/program-bantuan', [ProgramBantuanController::class, 'index']);
-
-    // Route::post('/rekomendasi-bantuan', [ProgramBantuanController::class, 'rekomendasi_bantuan'])->name('rekomendasi_bantuan');
+    Route::get('/history', [HistoryBantuanController::class, 'index'])->name('history');
+    Route::get('/history/detail', [HistoryBantuanController::class, 'detail_data'])->name('detail-history');
 });
